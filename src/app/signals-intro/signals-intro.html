@@ -1,3 +1,18 @@
 <div>
   <h1>Introdução</h1>
 </div>
+
+<div>
+  <h2>Elementos Químicos</h2>
+  <ul>
+    @for (elemento of elementos; track $index) {
+      <li (click)="selecionarElemento(elemento)">{{ elemento.nome }} ({{ elemento.simbolo }})</li>
+    }
+  </ul>
+
+  @if (elementoSelecionado()) {
+    <p>Sinal Gravável - Elemento Selecionado: {{ elementoSelecionado()?.nome }}</p>
+  }
+
+  <p>Sinal Computado - Informações Detalhadas: {{ exibirInfoElemento() }}</p>
+</div>
