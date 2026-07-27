@@ -1,0 +1,23 @@
+<div>
+  <h1>Effects</h1>
+</div>
+
+<div>
+  <h2>Elementos Químicos</h2>
+  <ul>
+    @for (elemento of elementos; track $index) {
+      <li (click)="selecionarElemento(elemento)">{{ elemento.nome }} ({{ elemento.simbolo }})</li>
+    }
+  </ul>
+
+  @if (elementoSelecionado()) {
+    <p>Sinal Gravável - Elemento Selecionado: {{ elementoSelecionado()?.nome }}</p>
+  }
+
+  <div class="temperature">
+    <p>Temperatura Atual: {{ temperatura() }}°C</p>
+    <button (click)="ajustarTemperatura(temperatura() - 10)">Diminuir Temperatura</button>
+    <button (click)="ajustarTemperatura(temperatura() + 10)">Aumentar Temperatura</button>
+  </div>
+  <p>Effect - Estado da matéria: {{ estadoFisico() }}</p>
+</div>
