@@ -1,4 +1,4 @@
-import { computed, effect, Service, signal } from '@angular/core';
+import { computed, effect, Service, signal, untracked } from '@angular/core';
 import type { Elemento } from '../interfaces/interfaces';
 
 @Service()
@@ -126,8 +126,8 @@ export class ElementoService {
     const elemento1 = this._elementoCalculado1();
     const elemento2 = this._elementoCalculado2();
 
-    const massa1 = (elemento1?.numeroAtomico ?? 0) + (elemento1?.numeroMassa ?? 0);
-    const massa2 = (elemento2?.numeroAtomico ?? 0) + (elemento2?.numeroMassa ?? 0);
+    const massa1 = untracked(() => (elemento1?.numeroAtomico ?? 0) + (elemento1?.numeroMassa ?? 0));
+    const massa2 = untracked(() => (elemento2?.numeroAtomico ?? 0) + (elemento2?.numeroMassa ?? 0));
 
     return massa1 + massa2;
   });
