@@ -1,0 +1,6 @@
+<h2>Elementos Favoritos</h2>
+<ul>
+  @for (elemento of favoritos(); track $index) {
+    <li>{{ elemento.nome }} ({{ elemento.simbolo }})</li>
+  }
+</ul>

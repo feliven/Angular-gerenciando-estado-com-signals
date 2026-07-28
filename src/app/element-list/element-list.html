@@ -1,0 +1,20 @@
+<h2>Lista de Elementos Químicos</h2>
+<ul>
+  @for (elemento of elementos; track $index) {
+    <li>
+      {{ elemento.nome }} ({{ elemento.simbolo }})
+
+      <button (click)="alternarFavorito(elemento)">
+        @if (elementoEFavorito(elemento)) {
+          <span>
+            <i class="fa-solid fa-star"></i>
+          </span>
+        } @else {
+          <span>
+            <i class="fa-regular fa-star"></i>
+          </span>
+        }
+      </button>
+    </li>
+  }
+</ul>

@@ -12,6 +12,9 @@ export class ElementoService {
   private _estadoFisico = signal<string>('(nenhum)');
   readonly estadoFisico = this._estadoFisico.asReadonly();
 
+  private _favoritos = signal<Elemento[]>([]);
+  readonly favoritos = this._favoritos.asReadonly();
+
   readonly elementos: Elemento[] = [
     { nome: 'Hidrogênio', simbolo: 'H', numeroMassa: 1, pontoFusao: -259, pontoEbulicao: -253 },
     { nome: 'Carbono', simbolo: 'C', numeroMassa: 12, pontoFusao: 3550, pontoEbulicao: 4027 },
@@ -48,5 +51,20 @@ export class ElementoService {
 
   setTemperatura(temperatura: number) {
     this._temperatura.set(temperatura);
+  }
+
+  setFavorito(favorito: Elemento) {
+    this._favoritos.update((arrayOriginal) => {
+      const favoritos = [...arrayOriginal];
+      favoritos.push(favorito);
+      return favoritos;
+    });
+  }
+
+  removerFavorito(favorito: Elemento) {
+    this._favoritos.update((arrayOriginal) => {
+      const favoritos = arrayOriginal.filter((fav) => fav !== favorito);
+      return favoritos;
+    });
   }
 }
